@@ -10,4 +10,5 @@ public class BenhVien {
 	private String tenbv;
 	private String diachi;
 	private String sdt;
+	private String mail;
 }

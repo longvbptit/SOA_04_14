@@ -1,5 +1,7 @@
 package RentOxy;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -20,13 +22,12 @@ public class NotifyController {
 //	private static final Logger logger = Logger.getLogger(SendToEmailService.class);
 
     @PostMapping("/notify")
-    public void sendMessage(@RequestBody String noti) {
+    public void sendMessage(@RequestBody List<String> noti) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("vubaolong2000@gmail.com");
-        message.setTo("dohoanglong8@gmail.com");
-        message.setSubject("ahihi");
-        message.setText(noti);
-        System.out.println("Minh rat chao ban!");
+        message.setFrom("huongdichvu4.14@gmail.com");
+        message.setTo(noti.get(0));
+        message.setSubject(noti.get(1));
+        message.setText(noti.get(2));
         emailSender.send(message);
     }
 }

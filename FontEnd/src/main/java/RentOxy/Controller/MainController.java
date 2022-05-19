@@ -25,7 +25,18 @@ public class MainController {
 	
 	@PostMapping("/dangkythueOxy")
 	public String dangKyThueOxy(DataOxy donDangKy) {
-		rest.postForObject("http://localhost:8080/donDangKy", donDangKy, DataOxy.class);
-		return "redirect:/oxy/thueOxy";
+		try {
+		DataOxy dataOxy = rest.postForObject("http://localhost:8080/donDangKy", donDangKy, DataOxy.class);
+		if(dataOxy != null) {
+			return "redirect:/oxy/thueOxy";
+		}
+		else {
+			return "DangKyKhongHopLe";
+		}
+		} catch (Exception e) {
+			System.out.println(e);
+			return "DangKyKhongThanhCong";
+		}
+		
 	}
 }

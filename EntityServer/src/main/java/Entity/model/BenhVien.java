@@ -24,6 +24,7 @@ public class BenhVien implements Serializable {
 	private String tenbv;
 	private String diachi;
 	private String sdt;
+	private String mail;
 //	public String getDiachi() {
 //		// TODO Auto-generated method stub
 //		return diachi;
