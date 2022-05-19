@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head>
+	<title>SOA</title>
+	<style>
+		
+		a {
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+
+<body>
+<div align=center>
+
+	<h1>ĐĂNG KÝ THUÊ OXY</h1>
+	<form method="POST" th:action="@{/oxy/dangkythueOxy}" th:object="${donDangKy}">
+		<table>
+		
+			<tr align="right">
+				<td>Mã bệnh viện:</td>
+				<td> <input type="text" th:field="*{maBV}" >
+				</td>
+			</tr>
+			<tr align="right">
+				<td>Số lượng Oxy cần thuê:</td>
+				<td> <input type="number" th:field="*{soLuongOxy}">
+				</td>
+			</tr>
+			
+		</table>
+		</br>
+		<div>
+			<button type="submit">Đăng ký</button>
+		</div>
+		
+	</form>
+
+
+</div>
+</body>
+
+</html>
