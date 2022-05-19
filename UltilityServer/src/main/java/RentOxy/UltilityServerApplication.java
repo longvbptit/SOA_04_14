@@ -1,13 +1,13 @@
-package com.example.demo;
+package RentOxy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UltilityServiceApplication {
+public class UltilityServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UltilityServiceApplication.class, args);
+		SpringApplication.run(UltilityServerApplication.class, args);
 	}
 
 }

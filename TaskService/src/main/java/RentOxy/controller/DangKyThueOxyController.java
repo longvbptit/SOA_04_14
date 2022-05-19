@@ -25,12 +25,14 @@ import RentOxy.model.Oxy;
 @RequestMapping(path = "/", produces = "application/json;charset=UTF-8")
 public class DangKyThueOxyController {
 
-private RestTemplate rest = new RestTemplate();
-	
-	
-	
+	private RestTemplate rest = new RestTemplate();
+
 	@PostMapping("/donDangKy")
 	public ResponseEntity<DataOxy> start(@RequestBody DataOxy dataOxy){
+		
+		String aString = "aaaaa";
+		rest.postForObject("http://localhost:8089/notify", aString, String.class);
+		
 		DataOxy result = dataOxy;
 		List<BenhVien> bvList = Arrays.asList(rest.getForObject("http://localhost:8000/benhvien", BenhVien[].class));
 		int check = 0;
@@ -68,7 +70,6 @@ private RestTemplate rest = new RestTemplate();
 			}
 		}
 
-		
 		return new ResponseEntity<DataOxy>(result, HttpStatus.OK);
 	}
 }

@@ -1,6 +1,4 @@
-package ultility.controller;
-
-import java.util.List;
+package RentOxy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -12,20 +10,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
-public class MailController {
+public class NotifyController {
 	@Autowired
     private JavaMailSender emailSender;
+	
+//	@Autowired
+//    private JavaMailSender javaMailSender;
+	
+//	private static final Logger logger = Logger.getLogger(SendToEmailService.class);
 
-    @PostMapping("/mail")
-    public void sendMessage(@RequestBody List<String> list) {
-
+    @PostMapping("/notify")
+    public void sendMessage(@RequestBody String noti) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("dohoanglong8@gmail.com");
-        message.setTo(list.get(0));
-        message.setSubject(list.get(1));
-        message.setText(list.get(2));
+        message.setFrom("vubaolong2000@gmail.com");
+        message.setTo("dohoanglong8@gmail.com");
+        message.setSubject("ahihi");
+        message.setText(noti);
+        System.out.println("Minh rat chao ban!");
         emailSender.send(message);
     }
-
-
 }
