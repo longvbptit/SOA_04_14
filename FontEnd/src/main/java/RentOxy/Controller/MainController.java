@@ -10,12 +10,12 @@ import org.springframework.web.client.RestTemplate;
 import RentOxy.Model.DataOxy;
 
 @Controller
-@RequestMapping("/oxy")
+@RequestMapping("/thueoxy")
 public class MainController {
 	
 	private RestTemplate rest = new RestTemplate();
 	
-	@GetMapping("/thueOxy")
+	@GetMapping("/dondangky")
 	public String donDangKyThueOxy(Model model) {
 		
 		DataOxy donDangKy = new DataOxy();
@@ -28,7 +28,7 @@ public class MainController {
 		try {
 		DataOxy dataOxy = rest.postForObject("http://localhost:8080/donDangKy", donDangKy, DataOxy.class);
 		if(dataOxy != null) {
-			return "redirect:/oxy/thueOxy";
+			return "redirect:/thueoxy/dondangky";
 		}
 		else {
 			return "DangKyKhongHopLe";

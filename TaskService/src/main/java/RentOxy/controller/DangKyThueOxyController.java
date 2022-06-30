@@ -33,12 +33,12 @@ public class DangKyThueOxyController {
 		
 		DataOxy result = dataOxy;
 		DonDangKy donDangKy = new DonDangKy();
-		List<BenhVien> bvList = Arrays.asList(rest.getForObject("http://localhost:8000/benhvien", BenhVien[].class));
+		List<BenhVien> bvList = Arrays.asList(rest.getForObject("http://localhost:8026/benhvien", BenhVien[].class));
 		int check = 0;
 		BenhVien benhVien1 = new BenhVien();
 		for(BenhVien bVien : bvList) {
 			if(result.getMaBV().equals(bVien.getMabv())) {
-				List<Oxy> oxyList = Arrays.asList(rest.getForObject("http://localhost:8000/oxy", Oxy[].class));
+				List<Oxy> oxyList = Arrays.asList(rest.getForObject("http://localhost:8025/oxy", Oxy[].class));
 				benhVien1 = bVien;
 				for(Oxy oxy : oxyList) {
 					if(result.getSoLuongOxy() <= oxy.getSoLuong()) {
@@ -62,8 +62,8 @@ public class DangKyThueOxyController {
 						donDangKy.setThoigian(strDate);
 						
 						oxy.setSoLuong(oxy.getSoLuong() - result.getSoLuongOxy());
-						rest.put("http://localhost:8000/oxy/capnhat", oxy);
-						rest.postForObject("http://localhost:8000/dondangky/them", donDangKy, DonDangKy.class);
+						rest.put("http://localhost:8025/oxy/capnhat", oxy);
+						rest.postForObject("http://localhost:8027/dondangky/them", donDangKy, DonDangKy.class);
 						
 					} else {
 						check = 2;
